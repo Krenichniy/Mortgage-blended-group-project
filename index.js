@@ -73,8 +73,11 @@ function createBank(e) {
 
 const onSubmitForm = (e) => {
   e.preventDefault();
-
-  const { name, interestRate, maxLoan, minPayment, loanTerm } = e.target.elements;
+  const isValid = [...e.target.elements].filter(elem => elem.nodeName === "INPUT").every(elem => 
+    elem.value !== ""
+  )
+  if (isValid) {
+    const { name, interestRate, maxLoan, minPayment, loanTerm } = e.target.elements;
 
   const newBank = {
     id: new Date(),
@@ -84,6 +87,9 @@ const onSubmitForm = (e) => {
     minPayment: minPayment.value,
     loanTerm: loanTerm.value,
   };
-
-  BANK_LIST.push(newBank);
+    BANK_LIST.push(newBank);
+  }
+  
+  
+  
 };
