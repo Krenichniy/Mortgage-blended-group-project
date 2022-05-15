@@ -1,0 +1,15 @@
+.form {
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.form>label {
+    margin-bottom: 10px;
+}
+
+.btn-createBank {
+    margin: 10px auto 0 auto;
+}
