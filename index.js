@@ -1,7 +1,10 @@
-console.log("hello");
+const refs={
+  formLinks: null,
+  divRoot: document.getElementById("root"),
+  buttonCreateFormRefs:null
+} 
 
-const divRoot = document.getElementById("root");
-console.log(divRoot);
+
 
 function renderBanks() {}
 
@@ -30,11 +33,9 @@ function createForm() {
         <button type="submit" class="btn-createBank">submit</button>
     </form>`;
 
-  divRoot.insertAdjacentHTML("afterbegin", formCap);
+  refs.divRoot.insertAdjacentHTML("afterbegin", formCap);
+  refs.formLinks=document.querySelector("#createBank")
 }
-
-// createForm();
-
 function init() {}
 
 function createFirstMarkup() {
@@ -42,7 +43,32 @@ function createFirstMarkup() {
 	<button type="button" class="btn-createBank">Додай банк</button
   >`;
 
-  divRoot.insertAdjacentHTML("afterbegin", createBankMarkup);
+  refs.divRoot.insertAdjacentHTML("afterbegin", createBankMarkup);
+   refs.buttonCreateFormRefs=document.querySelector(".btn-createBank")
 }
 
 createFirstMarkup();
+
+
+refs.buttonCreateFormRefs.addEventListener("click", openForm);
+
+function openForm() {
+  refs.divRoot.innerHTML=""
+  createForm()
+}
+document.querySelector(".btn-createBank")
+function createBank(e) {
+  const obj = {}
+console.log(e.currentTarget.value);
+
+
+}
+
+  // {
+  //   id: 1,
+  //   name: "Mono",
+  //   interestRate: 5,
+  //   maxLoan: 500000,
+  //   minPayment: 1000,
+  //   loanTerm: 12,
+  // },
