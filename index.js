@@ -8,7 +8,7 @@ function renderBanks() {
 }
 
 function createForm() {
-    const formCap = `<form id="createBank">
+    const formCap = `<form id="createBank" class="form">
         <label>
             Назва банку
             <input name="name"/>
@@ -29,9 +29,9 @@ function createForm() {
             Термін кредиту
             <input name="loanTerm" type="counter"/>
         </label>
-        <button type="submit">submit</button>
+        <button type="submit" class="btn-createBank">submit</button>
     </form>`;
-    
+
     divRoot.insertAdjacentHTML("afterbegin", formCap);
 }
 
