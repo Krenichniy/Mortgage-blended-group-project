@@ -1,10 +1,10 @@
-const refs={
+const refs = {
   formLinks: null,
   divRoot: document.getElementById("root"),
-  buttonCreateFormRefs:null
-} 
+  buttonCreateFormRefs: null,
+};
 
-
+const BANK_LIST = [];
 
 function renderBanks() {}
 
@@ -34,7 +34,8 @@ function createForm() {
     </form>`;
 
   refs.divRoot.insertAdjacentHTML("afterbegin", formCap);
-  refs.formLinks=document.querySelector("#createBank")
+  refs.formLinks = document.querySelector("#createBank");
+  refs.formLinks.addEventListener("submit", onSubmitForm);
 }
 function init() {}
 
@@ -44,31 +45,45 @@ function createFirstMarkup() {
   >`;
 
   refs.divRoot.insertAdjacentHTML("afterbegin", createBankMarkup);
-   refs.buttonCreateFormRefs=document.querySelector(".btn-createBank")
+  refs.buttonCreateFormRefs = document.querySelector(".btn-createBank");
 }
 
 createFirstMarkup();
 
-
 refs.buttonCreateFormRefs.addEventListener("click", openForm);
 
 function openForm() {
-  refs.divRoot.innerHTML=""
-  createForm()
+  refs.divRoot.innerHTML = "";
+  createForm();
 }
-document.querySelector(".btn-createBank")
+document.querySelector(".btn-createBank");
 function createBank(e) {
-  const obj = {}
-console.log(e.currentTarget.value);
-
-
+  const obj = {};
+  console.log(e.currentTarget.value);
 }
 
-  // {
-  //   id: 1,
-  //   name: "Mono",
-  //   interestRate: 5,
-  //   maxLoan: 500000,
-  //   minPayment: 1000,
-  //   loanTerm: 12,
-  // },
+// {
+//   id: 1,
+//   name: "Mono",
+//   interestRate: 5,
+//   maxLoan: 500000,
+//   minPayment: 1000,
+//   loanTerm: 12,
+// },
+
+const onSubmitForm = (e) => {
+  e.preventDefault();
+
+  const { name, interestRate, maxLoan, minPayment, loanTerm } = e.target.elements;
+
+  const newBank = {
+    id: new Date(),
+    name: name.value,
+    interestRate: interestRate.value,
+    maxLoan: maxLoan.value,
+    minPayment: minPayment.value,
+    loanTerm: loanTerm.value,
+  };
+
+  BANK_LIST.push(newBank);
+};
