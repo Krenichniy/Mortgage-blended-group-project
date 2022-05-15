@@ -1,14 +1,12 @@
-console.log('hello');
+console.log("hello");
 
-const divRoot = document.getElementById('root');
+const divRoot = document.getElementById("root");
 console.log(divRoot);
 
-function renderBanks() {
-
-}
+function renderBanks() {}
 
 function createForm() {
-    const formCap = `<form id="createBank" class="form">
+  const formCap = `<form id="createBank" class="form">
         <label>
             Назва банку
             <input name="name"/>
@@ -32,11 +30,19 @@ function createForm() {
         <button type="submit" class="btn-createBank">submit</button>
     </form>`;
 
-    divRoot.insertAdjacentHTML("afterbegin", formCap);
+  divRoot.insertAdjacentHTML("afterbegin", formCap);
 }
 
-createForm();
+// createForm();
 
-function init() {
+function init() {}
 
+function createFirstMarkup() {
+  const createBankMarkup = `<h2 class = "title_markup">Добав свій перший банк</h2>
+	<button type="button" class="btn-createBank">Додай банк</button
+  >`;
+
+  divRoot.insertAdjacentHTML("afterbegin", createBankMarkup);
 }
+
+createFirstMarkup();
