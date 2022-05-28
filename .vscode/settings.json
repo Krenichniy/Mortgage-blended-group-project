@@ -1,3 +1,6 @@
 {
-  "liveServer.settings.port": 5501
+  "liveServer.settings.port": 5501,
+  "terminal.integrated.copyOnSelection": false,
+  "terminal.integrated.cursorBlinking": false,
+  "terminal.integrated.defaultProfile.linux": ""
 }
