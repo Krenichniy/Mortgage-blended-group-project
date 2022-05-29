@@ -44,6 +44,16 @@ function createForm() {
   refs.formLinks = document.querySelector("#createBank");
   refs.formLinks.addEventListener("submit", onSubmitForm);
   refs.formLinks.addEventListener("input", addToLocalStorage);
+  checkLocalStorage()
+}
+
+function checkLocalStorage() {
+  const storageData = JSON.parse(localStorage.getItem(USER_INPUT_FORM_KEY))
+  if (storageData) {
+    for (key in storageData) {
+      refs.formLinks[key].value = storageData[key]
+    }
+ }
 }
 
 function addToLocalStorage(e) {
