@@ -44,21 +44,21 @@ function createForm() {
   refs.formLinks = document.querySelector("#createBank");
   refs.formLinks.addEventListener("submit", onSubmitForm);
   refs.formLinks.addEventListener("input", addToLocalStorage);
-  checkLocalStorage()
+  checkLocalStorage();
 }
 
 function checkLocalStorage() {
-  const storageData = JSON.parse(localStorage.getItem(USER_INPUT_FORM_KEY))
+  const storageData = JSON.parse(localStorage.getItem(USER_INPUT_FORM_KEY));
   if (storageData) {
     for (key in storageData) {
-      refs.formLinks[key].value = storageData[key]
+      refs.formLinks[key].value = storageData[key];
     }
- }
+  }
 }
 
 function addToLocalStorage(e) {
   inputData[e.target.name] = e.target.value;
-  localStorage.setItem(USER_INPUT_FORM_KEY, JSON.stringify(inputData))
+  localStorage.setItem(USER_INPUT_FORM_KEY, JSON.stringify(inputData));
 }
 
 function init() {}
@@ -119,5 +119,16 @@ const onSubmitForm = (e) => {
   }
   console.log(BANK_LIST);
   refs.divRoot.innerHTML = "";
-  createFirstMarkup();
+  renderList();
 };
+
+function renderList() {
+  const createBankMarkup = `<ol class="bank_list">
+  <li class="bank_item">
+    <p>Назва банку</p> 
+  <button type="button">Edit</button>
+  <button type="button">Remove bank</button>
+</li>
+</ol>`;
+  refs.divRoot.insertAdjacentHTML("afterbegin", createBankMarkup);
+}
