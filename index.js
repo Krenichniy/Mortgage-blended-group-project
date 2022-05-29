@@ -44,6 +44,16 @@ function createForm() {
   refs.formLinks = document.querySelector("#createBank");
   refs.formLinks.addEventListener("submit", onSubmitForm);
   refs.formLinks.addEventListener("input", addToLocalStorage);
+  checkLocalStorage();
+}
+
+function checkLocalStorage() {
+  const storageData = JSON.parse(localStorage.getItem(USER_INPUT_FORM_KEY));
+  if (storageData) {
+    for (key in storageData) {
+      refs.formLinks[key].value = storageData[key];
+    }
+  }
 }
 
 function addToLocalStorage(e) {
@@ -104,8 +114,33 @@ const onSubmitForm = (e) => {
       loanTerm: loanTerm.value,
     };
     BANK_LIST.push(newBank);
+     refs.divRoot.innerHTML = "";
+  } else {
+    alert('Заповніть всі поля')
+    
   }
   console.log(BANK_LIST);
-  refs.divRoot.innerHTML = "";
-  createFirstMarkup();
+ 
+  // renderList();
+  console.log(BANK_LIST);
 };
+
+function renderList() {
+
+  const createBankMarkup = `<ol class="bank_list">${BANK_LIST.map(
+    createBankItem
+  ).join("")}</ol>`;
+    refs.divRoot.innerHTML = createBankMarkup;
+
+}
+
+
+
+function createBankItem({name}) {
+    return` <li class="bank_item">
+    <p>${name}</p> 
+  <button type="button">Edit</button>
+  <button type="button">Remove bank</button>
+</li>`
+}
+
