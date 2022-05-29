@@ -114,33 +114,27 @@ const onSubmitForm = (e) => {
       loanTerm: loanTerm.value,
     };
     BANK_LIST.push(newBank);
-     refs.divRoot.innerHTML = "";
+    refs.divRoot.innerHTML = "";
   } else {
-    alert('Заповніть всі поля')
-    
+    alert("Заповніть всі поля");
   }
   console.log(BANK_LIST);
- 
-  // renderList();
+
+  renderList();
   console.log(BANK_LIST);
 };
 
 function renderList() {
-
   const createBankMarkup = `<ol class="bank_list">${BANK_LIST.map(
     createBankItem
   ).join("")}</ol>`;
-    refs.divRoot.innerHTML = createBankMarkup;
-
+  refs.divRoot.innerHTML = createBankMarkup;
 }
 
-
-
-function createBankItem({name}) {
-    return` <li class="bank_item">
+function createBankItem({ name }) {
+  return ` <li class="bank_item">
     <p>${name}</p> 
   <button type="button">Edit</button>
   <button type="button">Remove bank</button>
-</li>`
+</li>`;
 }
-
