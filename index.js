@@ -9,7 +9,7 @@ const BANK_LIST = [];
 function renderBanks() {}
 
 function createForm() {
-  const formCap = `<form id="createBank" class="cardBank form">
+  const formMarkup = `<form id="createBank" class="cardBank form">
         <label>
             Назва банку
             <input name="name" class="form-imput"/>
@@ -38,7 +38,7 @@ function createForm() {
          </button>
     </form>`;
 
-  refs.divRoot.insertAdjacentHTML("afterbegin", formCap);
+  refs.divRoot.insertAdjacentHTML("afterbegin", formMarkup);
   refs.formLinks = document.querySelector("#createBank");
   refs.formLinks.addEventListener("submit", onSubmitForm);
 }
