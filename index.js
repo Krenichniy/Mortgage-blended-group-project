@@ -48,7 +48,7 @@ function createForm() {
 
 function addToLocalStorage(e) {
   inputData[e.target.name] = e.target.value;
-  localStorage.setItem(USER_INPUT_FORM_KEY, JSON.stringify(inputData))
+  localStorage.setItem(USER_INPUT_FORM_KEY, JSON.stringify(inputData));
 }
 
 function init() {}
@@ -65,8 +65,6 @@ function createFirstMarkup() {
   refs.buttonCreateFormRefs = document.querySelector(".btn-createBank");
   refs.buttonCreateFormRefs.addEventListener("click", openForm);
 }
-
-createFirstMarkup();
 
 function openForm() {
   refs.divRoot.innerHTML = "";
