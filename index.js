@@ -5,6 +5,8 @@ const refs = {
 };
 
 const BANK_LIST = [];
+const USER_INPUT_FORM_KEY = "User-form-data";
+const inputData = {};
 
 function renderBanks() {}
 
@@ -41,6 +43,12 @@ function createForm() {
   refs.divRoot.insertAdjacentHTML("afterbegin", formMarkup);
   refs.formLinks = document.querySelector("#createBank");
   refs.formLinks.addEventListener("submit", onSubmitForm);
+  refs.formLinks.addEventListener("input", addToLocalStorage);
+}
+
+function addToLocalStorage(e) {
+  inputData[e.target.name] = e.target.value;
+  localStorage.setItem(USER_INPUT_FORM_KEY, JSON.stringify(inputData))
 }
 
 function init() {}
