@@ -32,7 +32,7 @@ function createForm() {
             Термін кредиту
             <input name="loanTerm" type="counter" class="form-imput"/>
         </label>
-        <button type="submit" class="btn-createBank">
+        <button type="submit" class="btn-createBank main-btn">
          <svg class="icon icon-ok" width="20"; height="20";>
          <use href="./icomoon/icons.svg#icon-ok"></use>
          </svg>
@@ -72,7 +72,7 @@ function createFirstMarkup() {
 }
 
 function addNewBankButtom() {
-  return `<button type="button" class="btn-createBank">
+  return `<button type="button" class="btn-createBank main-btn">
   <svg class="icon icon-plus" width="20"; height="20"><use href="./icomoon/icons.svg#icon-plus"></use></svg>
   <span>Додай банк</span>
   </button>`;
@@ -84,6 +84,7 @@ function openForm() {
   refs.divRoot.innerHTML = "";
   createForm();
 }
+
 document.querySelector(".btn-createBank");
 
 function createBank(e) {
@@ -138,7 +139,7 @@ function renderList() {
 function createBankItem({ name }) {
   return ` <li class="bank_item">
     <p>${name}</p>
-    <button type="button">Edit</button>
-    <button type="button">Remove bank</button>
+    <button type="button" class="btn-createBank bank_item-btn">Edit</button>
+    <button type="button" class="btn-createBank bank_item-btn">Remove bank</button>
 </li>`;
 }
