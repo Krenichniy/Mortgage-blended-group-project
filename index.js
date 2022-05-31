@@ -123,7 +123,7 @@ const onSubmitForm = (e) => {
   }
   console.log(BANK_LIST);
  
-  // renderList();
+  renderList();
   console.log(BANK_LIST);
 };
 
