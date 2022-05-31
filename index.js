@@ -64,16 +64,18 @@ function addToLocalStorage(e) {
 function init() {}
 
 function createFirstMarkup() {
-  const createBankMarkup = `<h2 class = "title_markup">Добав свій перший банк</h2>
-	<button type="button" class="btn-createBank">
-    <svg class="icon icon-plus" width="20"; height="20"><use href="./icomoon/icons.svg#icon-plus"></use></svg>
-    <span>Додай банк</span>
-    </button
-  >`;
+  const createBankMarkup = `<h2 class = "title_markup">Додай свій перший банк</h2>${addNewBankButtom()}`;
 
   refs.divRoot.insertAdjacentHTML("afterbegin", createBankMarkup);
   refs.buttonCreateFormRefs = document.querySelector(".btn-createBank");
   refs.buttonCreateFormRefs.addEventListener("click", openForm);
+}
+
+function addNewBankButtom() {
+  return `<button type="button" class="btn-createBank">
+  <svg class="icon icon-plus" width="20"; height="20"><use href="./icomoon/icons.svg#icon-plus"></use></svg>
+  <span>Додай банк</span>
+  </button>`;
 }
 
 createFirstMarkup();
@@ -116,33 +118,27 @@ const onSubmitForm = (e) => {
       loanTerm: loanTerm.value,
     };
     BANK_LIST.push(newBank);
-     refs.divRoot.innerHTML = "";
+    refs.divRoot.innerHTML = "";
   } else {
-    alert('Заповніть всі поля')
-    
+    alert("Заповніть всі поля");
   }
   console.log(BANK_LIST);
- 
   renderList();
   console.log(BANK_LIST);
 };
 
 function renderList() {
-
-  const createBankMarkup = `<ol class="bank_list">${BANK_LIST.map(
-    createBankItem
-  ).join("")}</ol>`;
-    refs.divRoot.innerHTML = createBankMarkup;
-
+  const createBankMarkup = `${addNewBankButtom()}
+  <ol class="bank_list">${BANK_LIST.map(createBankItem).join("")}</ol>`;
+  refs.divRoot.innerHTML = createBankMarkup;
+  refs.buttonCreateFormRefs = document.querySelector(".btn-createBank");
+  refs.buttonCreateFormRefs.addEventListener("click", openForm);
 }
 
-
-
-function createBankItem({name}) {
-    return` <li class="bank_item">
-    <p>${name}</p> 
-  <button type="button">Edit</button>
-  <button type="button">Remove bank</button>
-</li>`
+function createBankItem({ name }) {
+  return ` <li class="bank_item">
+    <p>${name}</p>
+    <button type="button">Edit</button>
+    <button type="button">Remove bank</button>
+</li>`;
 }
-
