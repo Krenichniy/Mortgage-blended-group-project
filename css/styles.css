@@ -35,7 +35,7 @@ button:focus {
 
 .btn-createBank {
   width: 150px;
-  margin: 10px auto 0 auto;
+
   border: none;
   box-sizing: border-box;
   border-radius: 4px;
@@ -45,17 +45,22 @@ button:focus {
   justify-content: space-evenly;
 }
 
+.main-btn {
+  margin: 0 auto;
+}
+
 .icon {
   display: inline-flex;
-  color: #000550;
+  padding: 3px;
   border: 1px solid #000550;
   border-radius: 50%;
   fill: #000550;
 }
 
-.icon:hover {
+button:hover .icon,
+button:focus .icon {
   border: none;
-  fill: yellow;
+  fill: currentColor;
 }
 
 .hero-sidebar {
@@ -118,4 +123,20 @@ button:focus {
 .form-imput:focus,
 .form-imput:hover {
   border-color: yellow;
+}
+
+/* Bank List item styles */
+.bank_list {
+  padding: 0;
+  margin-left: 23px;
+  margin-top: 50px;
+  margin-bottom: 0;
+}
+.bank_item {
+  display: flex;
+  align-items: center;
+}
+
+.bank_item-btn {
+  margin-left: 20px;
 }

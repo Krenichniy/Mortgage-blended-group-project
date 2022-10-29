@@ -32,7 +32,7 @@ function createForm() {
             Термін кредиту
             <input name="loanTerm" type="counter" class="form-imput"/>
         </label>
-        <button type="submit" class="btn-createBank">
+        <button type="submit" class="btn-createBank main-btn">
          <svg class="icon icon-ok" width="20"; height="20";>
          <use href="./icomoon/icons.svg#icon-ok"></use>
          </svg>
@@ -64,22 +64,25 @@ function addToLocalStorage(e) {
 function init() {}
 
 function createFirstMarkup() {
-  const createBankMarkup = `<h2 class = "title_markup">Добав свій перший банк</h2>
-	<button type="button" class="btn-createBank">
-    <svg class="icon icon-plus" width="20"; height="20"><use href="./icomoon/icons.svg#icon-plus"></use></svg>
-    <span>Додай банк</span>
-    </button
-  >`;
+  const createBankMarkup = `<h2 class = "title_markup">Додай свій перший банк</h2>${addNewBankButtom()}`;
 
   refs.divRoot.insertAdjacentHTML("afterbegin", createBankMarkup);
   refs.buttonCreateFormRefs = document.querySelector(".btn-createBank");
   refs.buttonCreateFormRefs.addEventListener("click", openForm);
 }
 
+function addNewBankButtom() {
+  return `<button type="button" class="btn-createBank main-btn">
+  <svg class="icon icon-plus" width="20"; height="20"><use href="./icomoon/icons.svg#icon-plus"></use></svg>
+  <span>Додай банк</span>
+  </button>`;
+}
+
 function openForm() {
   refs.divRoot.innerHTML = "";
   createForm();
 }
+
 document.querySelector(".btn-createBank");
 
 function createBank(e) {
@@ -102,8 +105,7 @@ const onSubmitForm = (e) => {
     .filter((elem) => elem.nodeName === "INPUT")
     .every((elem) => elem.value !== "");
   if (isValid) {
-    const { name, interestRate, maxLoan, minPayment, loanTerm } =
-      e.target.elements;
+    const { name, interestRate, maxLoan, minPayment, loanTerm } = e.target.elements;
 
     const newBank = {
       id: BANK_LIST.length + 1,
@@ -120,21 +122,19 @@ const onSubmitForm = (e) => {
   }
   console.log(BANK_LIST);
 
-  renderList();
+  // renderList();
   console.log(BANK_LIST);
 };
 
 function renderList() {
-  const createBankMarkup = `<ol class="bank_list">${BANK_LIST.map(
-    createBankItem
-  ).join("")}</ol>`;
+  const createBankMarkup = `<ol class="bank_list">${BANK_LIST.map(createBankItem).join("")}</ol>`;
   refs.divRoot.innerHTML = createBankMarkup;
 }
 
 function createBankItem({ name }) {
   return ` <li class="bank_item">
-    <p>${name}</p> 
-  <button type="button">Edit</button>
-  <button type="button">Remove bank</button>
+    <p>${name}</p>
+    <button type="button" class="btn-createBank bank_item-btn">Edit</button>
+    <button type="button" class="btn-createBank bank_item-btn">Remove bank</button>
 </li>`;
 }
